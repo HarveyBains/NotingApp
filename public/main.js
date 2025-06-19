@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let sessionTimer;
     let timeRemaining;
     let isPaused = false;
+    
+    // Add audio elements
+    const startSound = new Audio('/audio/start.mp3');
+    const endSound = new Audio('/audio/end.mp3');
 
     // Timer selection
     document.querySelectorAll('.timer-btn').forEach(btn => {
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('end-btn').addEventListener('click', () => {
+        endSound.play();  // Play end sound when manually ending session
         endSession();
     });
 
@@ -62,6 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
         currentWordIndex = 1; // Start with "Imaging"
         updateCurrentWord();
         updateTimer();
+        
+        // Play start sound when session begins
+        startSound.play().catch(error => {
+            console.log('Audio playback error:', error);
+        });
+        
         sessionTimer = setInterval(updateTimer, 1000);
     }
 
@@ -88,6 +99,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTimer() {
         if (timeRemaining <= 0) {
             clearInterval(sessionTimer);
+            
+            // Play end sound when timer reaches zero
+            endSound.play().catch(error => {
+                console.log('Audio playback error:', error);
+            });
+            
             flashScreen();
             setTimeout(endSession, 1000);
             return;
