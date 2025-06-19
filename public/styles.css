@@ -1,0 +1,50 @@
+::-webkit-scrollbar { display: none; }
+body { 
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Preserve Font Awesome icons */
+.fa, .fas, .far, .fal, .fab {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+}
+
+.zen-gradient {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d30 50%, #3e3e42 100%);
+    animation: zenFlow 8s ease-in-out infinite;
+}
+
+@keyframes zenFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.word-ripple {
+    animation: ripple 2s ease-in-out infinite;
+}
+
+@keyframes ripple {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.flash-screen {
+    animation: flash 0.3s ease-in-out;
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+}
+
+.edit-button {
+    position: absolute;
+    z-index: 1000;
+}

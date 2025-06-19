@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Noting Meditation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "obsidian": {
+          "400": "#9d9d9d",
+          "500": "#69696e",
+          "600": "#525257",
+          "700": "#3e3e42",
+          "800": "#2d2d30",
+          "900": "#1e1e1e",
+          "accent": "#7f6df2",
+          "purple": "#a882ff",
+          "blue": "#8fb2ff",
+          "green": "#90ee90",
+          "orange": "#ffb86c",
+          "red": "#ff7979"
+        }
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap">
+</head>
+<body class="bg-obsidian-900 text-obsidian-400 font-sans overflow-hidden">
+
+    <!-- Home Page -->
+    <div id="home-page" class="min-h-screen zen-gradient px-6 py-8">
+        
+        <!-- Header -->
+        <header id="header" class="text-center pt-8 pb-4">
+            <h1 class="text-2xl font-light text-obsidian-400">Noting Meditation</h1>
+        </header>
+
+        <!-- Timer Selection -->
+        <section id="timer-section" class="mt-8 mb-12">
+            <h2 class="text-lg font-light text-center text-obsidian-500 mb-8">Choose Duration</h2>
+            <div class="flex justify-center space-x-4">
+                <button class="timer-btn bg-obsidian-800 hover:bg-obsidian-700 w-16 h-16 rounded-full flex items-center justify-center text-lg font-medium transition-all duration-300 border border-obsidian-600" data-time="1">1m</button>
+                <button class="timer-btn bg-obsidian-accent w-16 h-16 rounded-full flex items-center justify-center text-lg font-medium transition-all duration-300 border border-obsidian-accent text-white" data-time="2">2m</button>
+                <button class="timer-btn bg-obsidian-800 hover:bg-obsidian-700 w-16 h-16 rounded-full flex items-center justify-center text-lg font-medium transition-all duration-300 border border-obsidian-600" data-time="3">3m</button>
+            </div>
+        </section>
+
+        <!-- Focus Words -->
+        <section id="words-section" class="mb-16">
+            <h2 class="text-lg font-light text-center text-obsidian-500 mb-8">Focus Words</h2>
+            <div class="space-y-3">
+                <div class="focus-word-item bg-obsidian-800 rounded-2xl p-4 flex items-center justify-between border border-obsidian-700">
+                    <input type="text" value="Talking" class="bg-transparent text-obsidian-400 font-medium text-base flex-1 focus:outline-none focus:text-white">
+                    <i class="fa-solid fa-pen text-obsidian-500 text-sm"></i>
+                </div>
+                <div class="focus-word-item bg-obsidian-800 rounded-2xl p-4 flex items-center justify-between border border-obsidian-700">
+                    <input type="text" value="Imaging" class="bg-transparent text-obsidian-400 font-medium text-base flex-1 focus:outline-none focus:text-white">
+                    <i class="fa-solid fa-pen text-obsidian-500 text-sm"></i>
+                </div>
+                <div class="focus-word-item bg-obsidian-800 rounded-2xl p-4 flex items-center justify-between border border-obsidian-700">
+                    <input type="text" value="Local" class="bg-transparent text-obsidian-400 font-medium text-base flex-1 focus:outline-none focus:text-white">
+                    <i class="fa-solid fa-pen text-obsidian-500 text-sm"></i>
+                </div>
+                <div class="focus-word-item bg-obsidian-800 rounded-2xl p-4 flex items-center justify-between border border-obsidian-700">
+                    <input type="text" value="Global" class="bg-transparent text-obsidian-400 font-medium text-base flex-1 focus:outline-none focus:text-white">
+                    <i class="fa-solid fa-pen text-obsidian-500 text-sm"></i>
+                </div>
+                <div class="focus-word-item bg-obsidian-800 rounded-2xl p-4 flex items-center justify-between border border-obsidian-700">
+                    <input type="text" value="All" class="bg-transparent text-obsidian-400 font-medium text-base flex-1 focus:outline-none focus:text-white">
+                    <i class="fa-solid fa-pen text-obsidian-500 text-sm"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start Button -->
+        <section id="start-section" class="fixed bottom-8 left-6 right-6">
+            <button id="start-btn" class="w-full bg-obsidian-accent hover:bg-obsidian-purple text-white font-medium py-4 rounded-2xl transition-all duration-300 text-lg">
+                Begin
+            </button>
+        </section>
+    </div>
+
+    <!-- Meditation Session Page -->
+    <div id="session-page" class="min-h-screen zen-gradient px-6 py-8 hidden">
+        
+        <!-- Session Controls -->
+        <section id="session-controls" class="flex justify-between items-center mb-16">
+            <button id="pause-btn" class="w-12 h-12 bg-obsidian-800 rounded-full flex items-center justify-center border border-obsidian-700">
+                <i class="fa-solid fa-pause text-obsidian-400"></i>
+            </button>
+            <button id="end-btn" class="w-12 h-12 bg-obsidian-800 rounded-full flex items-center justify-center border border-obsidian-700">
+                <i class="fa-solid fa-xmark text-obsidian-400"></i>
+            </button>
+        </section>
+
+        <!-- Timer Display -->
+        <section id="timer-display" class="text-center mb-12">
+            <div class="text-2xl font-light text-obsidian-500" id="countdown">2:00</div>
+        </section>
+
+        <!-- Focus Word Display -->
+        <section id="focus-display" class="flex-1 flex items-center justify-center">
+            <div class="text-center">
+                <div id="current-word" class="text-4xl font-light text-obsidian-400 word-ripple mb-8">Imaging</div>
+                <div class="w-16 h-1 bg-obsidian-accent rounded-full mx-auto"></div>
+            </div>
+        </section>
+
+        <!-- Word Navigation -->
+        <section id="word-navigation" class="fixed bottom-8 left-6 right-6 flex justify-center space-x-4">
+            <button id="prev-word" class="w-12 h-12 bg-obsidian-800 rounded-full flex items-center justify-center border border-obsidian-700">
+                <i class="fa-solid fa-chevron-left text-obsidian-400"></i>
+            </button>
+            <button id="next-word" class="w-12 h-12 bg-obsidian-800 rounded-full flex items-center justify-center border border-obsidian-700">
+                <i class="fa-solid fa-chevron-right text-obsidian-400"></i>
+            </button>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
